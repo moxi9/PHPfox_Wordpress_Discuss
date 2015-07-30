@@ -20,7 +20,7 @@ new Route\Group('/wordpress-discuss', function() {
 					}
 
 					$total++;
-					$blogs .= '<li style="padding-bottom: 10px;"><a href="' . $item->link . '">' . $item->title . '</a><div class="extra_info">' . \Phpfox_Date::instance()->convertTime($time) . '</div></li>';
+					$blogs .= '<li style="padding-bottom: 10px;"><a href="' . $item->link . '">' . $item->title . '</a><div class="extra_info">' . \Phpfox::getLib('date')->convertTime($time) . '</div></li>';
 				}
 			// }
 		}
