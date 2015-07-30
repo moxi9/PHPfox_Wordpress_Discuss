@@ -1,22 +1,22 @@
 {
-	"id": "PHPfox_Wordpress_Discuss",
-	"name": "Wordpress Discuss",
-	"version": 1.0,
-	"admincp_route": "\/wordpress-discuss/admincp",
-	"icon": "",
-	"settings": {
-		"pf_wp_d_id": {
-			"info": "Forum ID"
-		},
-		"pf_wp_d_user_id": {
-			"info": "User ID"
-		},
-		"pf_wp_d_mesage": {
-			"info": "Thread Content",
-			"value": "This thread is a community discussion in regards to our announcement \"{{ title }}\"."
-		},
-		"pf_wp_d_token": {
-			"info": "Webhook Token"
-		}
-	}
+    "id": "PHPfox_Wordpress_Discuss",
+    "name": "Wordpress Discuss",
+    "version": 1.1,
+    "admincp_route": "\/wordpress-discuss\/admincp",
+    "icon": "",
+    "settings": {
+        "pf_wp_d_id": {
+            "info": "Forum ID"
+        },
+        "pf_wp_d_user_id": {
+            "info": "User ID"
+        },
+        "pf_wp_d_mesage": {
+            "info": "Thread Content",
+            "value": "This thread is a community discussion in regards to our announcement \"{{ title }}\"."
+        },
+        "pf_wp_d_token": {
+            "info": "Webhook Token"
+        }
+    }
 }
