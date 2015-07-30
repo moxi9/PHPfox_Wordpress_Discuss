@@ -1,7 +1,7 @@
 {
     "id": "PHPfox_Wordpress_Discuss",
     "name": "Wordpress Discuss",
-    "version": 1.1,
+    "version": 1.2,
     "admincp_route": "\/wordpress-discuss\/admincp",
     "icon": "",
     "settings": {
