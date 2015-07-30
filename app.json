@@ -1,9 +1,9 @@
 {
     "id": "PHPfox_Wordpress_Discuss",
     "name": "Wordpress Discuss",
-    "version": 1.7,
+    "version": 1.8,
     "admincp_route": "\/wordpress-discuss\/admincp",
-    "icon": "",
+    "icon": "\/\/d2h79mkp7etn4r.cloudfront.net\/icon\/2015\/07\/389eebeedf2cdc22bb76bd31a5293425.png",
     "settings": {
         "pf_wp_d_id": {
             "info": "Forum ID"
@@ -17,6 +17,14 @@
         },
         "pf_wp_d_token": {
             "info": "Webhook Token"
+        },
+        "pf_wp_d_rss": {
+            "info": "RSS Feed URL",
+            "value": ""
         }
+    },
+    "credits": {
+        "Icomoon": "http:\/\/www.flaticon.com\/authors\/icomoon",
+        "www.flaticon.com": "http:\/\/www.flaticon.com"
     }
 }

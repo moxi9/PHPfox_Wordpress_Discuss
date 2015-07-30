@@ -4,6 +4,35 @@ namespace Core;
 
 new Route\Group('/wordpress-discuss', function() {
 
+	new Route('/latest', function (Controller $controller) {
+		$total = 0;
+		$blogs = '<ul>';
+		$xml = simplexml_load_string(file_get_contents(setting('pf_wp_d_rss')));
+		if (is_object($xml) && isset($xml->channel) && $xml->channel instanceof \SimpleXMLElement) {
+			// d($xml->channel->item); exit;
+			//if (isset($xml->channel->item) && is_array($xml->channel->item)) {
+				foreach ($xml->channel->item as $item) {
+					$time = strtotime($item->pubDate);
+					$old = strtotime('-7 days');
+
+					if ($time <= $old) {
+						continue;
+					}
+
+					$total++;
+					$blogs .= '<li style="padding-bottom: 10px;"><a href="' . $item->link . '">' . $item->title . '</a><div class="extra_info">' . \Phpfox_Date::instance()->convertTime($time) . '</div></li>';
+				}
+			// }
+		}
+		$blogs .= '</ul>';
+
+		if (!$total) {
+			return;
+		}
+
+		echo $blogs;
+	});
+
 	new Route('/admincp', function(Controller $controller) {
 		if (!\Phpfox::isAdmin()) {
 			return '';
@@ -24,7 +53,7 @@ new Route\Group('/wordpress-discuss', function() {
 		]);
 	});
 
-	(new Route('/new-post/:token', function(Controller $controller, $token) {
+	new Route('/new-post/:token', function(Controller $controller, $token) {
 		$tokenSetting = setting('pf_wp_d_token');
 		if (empty($tokenSetting)) {
 			throw error('Token has not been created yet.');
@@ -56,5 +85,19 @@ new Route\Group('/wordpress-discuss', function() {
 			'time_stamp' => PHPFOX_TIME,
 			'time_update' => PHPFOX_TIME,
 		]);
-	}));
+	});
 });
+
+return function(App\Object $App, \Twig_Environment $View) {
+	new Event('lib_module_get_blocks', function(\Phpfox_Module $object) use($View) {
+
+		if (!setting('pf_wp_d_rss')) {
+			return false;
+		}
+
+
+		$object->block('core.index-member', 1, $View->render('@PHPfox_Wordpress_Discuss/block.html', [
+
+		]));
+	});
+};

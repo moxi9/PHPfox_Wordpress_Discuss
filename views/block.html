@@ -1,0 +1,23 @@
+<div class="block" id="pf-wordpress-discuss" style="display: none;">
+	<div class="title">{{ _p('Latest Announcement') }}</div>
+	<div class="content">
+		<i class="fa fa-circle-o-notch fa-spin"></i>
+	</div>
+</div>
+<script>
+	$Ready(function() {
+		var t = $('#pf-wordpress-discuss');
+		if (!t.hasClass('active')) {
+			t.addClass('active');
+			$.ajax({
+				url: PF.url.make('/wordpress-discuss/latest'),
+				success: function(e) {
+					if (e.length > 3) {
+						t.show();
+						t.find('.content').html(e);
+					}
+				}
+			});
+		}
+	});
+</script>
