@@ -43,11 +43,11 @@ new Route\Group('/wordpress-discuss', function() {
 		}
 
 		$content = setting('pf_wp_d_mesage');
-		$content = str_replace('{{ title }}', '<a href="' . $_REQUEST['post_url'] . '">' . $_REQUEST['post_title'] . '</a>', $content);
+		$content = str_replace('{{ title }}', '[link="' . $_REQUEST['post_url'] . '"]' . $_REQUEST['post_title'] . '[/link]', $content);
 
 		\Forum_Service_Thread_Process::instance()->add([
 			'forum_id' => setting('pf_wp_d_id'),
-			'title' => $_REQUEST['post_name'],
+			'title' => $_REQUEST['post_title'],
 			'time_stamp' => PHPFOX_TIME,
 			'time_update' => PHPFOX_TIME,
 			'text' => $content
